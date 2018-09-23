@@ -63,6 +63,9 @@ body,
 
 .memorial-holder {
     width: 100%;
+    align-items: flex-end;
+    display: flex;
+    justify-content: center;
 }
 
 .memorial--image {
@@ -96,11 +99,11 @@ body,
 @media only screen and (min-width: 650px) {
     .memorial--image,
     .memorial--text {
-        width: 300px;
+        width: 290px;
     }
 
     .memorial--text {
         font-size: 24px;
-        line-height: 36px;
+        line-height: 40px;
     }
 }

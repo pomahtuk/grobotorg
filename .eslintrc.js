@@ -3,4 +3,7 @@ module.exports = {
     "env": {
         "browser": true
     },
+    "rules": {
+        "no-param-reassign": ["error", { "props": false }],
+    }
 };
