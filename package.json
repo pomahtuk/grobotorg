@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack --config webpack.prod.js",
     "start": "webpack-dev-server --open --config webpack.dev.js",
-    "publish-pages": "git checkout gh-pages && git rebase master && yarn build && mv ./dist/* . && git add -A && git commit -m 'release' --allow-empty && git push && git checkout master"
+    "publish-pages": "git branch -D gh-pages && git checkout -B gh-pages && yarn build && mv ./dist/* . && git add -A && git commit -m 'release' --allow-empty && git push && git checkout master"
   },
   "author": "",
   "license": "MIT",
