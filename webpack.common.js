@@ -52,8 +52,14 @@ module.exports = {
         },
       },
       {
-        test: /\.jpg$/,
+        test: /\.jpg|.png$/,
         use: 'file-loader',
+      },
+      {
+        test: /\.(html)$/,
+        use: {
+          loader: 'html-loader',
+        },
       },
     ],
   },
