@@ -18,7 +18,7 @@ body,
 }
 
 .background-image {
-    background: url('./assets/backgrounds/bg_simple.jpg');
+    background: url('./assets/backgrounds/bg_simple_opt.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     background-position-x: center;
@@ -96,5 +96,10 @@ body,
     .memorial--image,
     .memorial--text {
         width: 300px;
+    }
+
+    .memorial--text {
+        font-size: 24px;
+        line-height: 36px;
     }
 }
