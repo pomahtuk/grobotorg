@@ -23,19 +23,46 @@
             <div class="memorial">
                 <img class="memorial-bg memorial-bg--simple position-relative" src="./assets/memorial_simple.png" />
                 <div class="memorial--image">
-                    <img class="user-picture position-relative" src="http://i.pravatar.cc/250" />
+                    <img class="user-picture position-relative" src="http://i.pravatar.cc/250" data-micromodal-trigger="modal-source"/>
                     <video class="user-video position-relative hidden" autoplay/>
                 </div>
                 <div class="memorial--text">
                     Жил, умер, да и не все ли нам равно?
-                    <br >
-                    <fb:login-button scope="public_profile" onlogin="checkLoginState();">
-                    </fb:login-button>
-                    <br >
-                    <button id="vk_auth">VK</button>
-                    <br>
-                    <button id="use_camera">camera</button>
                 </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal micromodal-slide" id="modal-source" aria-hidden="true">
+        <div class="modal__overlay" tabindex="-1" data-micromodal-close>
+            <div class="modal__container" role="dialog" aria-modal="true" aria-labelledby="modal-1-title">
+                <header class="modal__header">
+                    <h2 class="modal__title" id="modal-1-title">
+                        Взять изображение из:
+                    </h2>
+                    <button class="modal__close" aria-label="Close modal" data-micromodal-close></button>
+                </header>
+                <main class="modal__content" id="modal-1-content">
+                    <div>
+                        <button class="pure-button pure-button-primary button-small" id="fb_auth" data-custom-close="modal-source">
+                            FB
+                        </button>
+                        <div class="hidden">
+                            <fb:login-button scope="public_profile" onlogin="checkLoginState();">
+                            </fb:login-button>
+                        </div>
+                    </div>
+                    <div>
+                        <button class="pure-button pure-button-primary button-small" id="vk_auth" data-custom-close="modal-source">
+                            VK
+                        </button>
+                    </div>
+                    <div>
+                        <button class="pure-button pure-button-primary button-small" id="use_camera" data-custom-close="modal-source">
+                            camera
+                        </button>
+                    </div>
+                </main>
             </div>
         </div>
     </div>

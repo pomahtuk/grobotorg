@@ -1,13 +1,13 @@
+import Globals from './globals';
+
 const updateImages = (photoUrl) => {
-  const images = document.querySelectorAll('.memorial--image img');
   const img = document.createElement('img');
   img.src = photoUrl;
   img.onload = () => {
     // hide video, JIC
-    const video = document.querySelector('video.user-video');
-    video.classList.add('hidden');
+    Globals.videoElement.classList.add('hidden');
 
-    Array.prototype.forEach.call(images, (image) => {
+    Array.prototype.forEach.call(Globals.imagesElements, (image) => {
       image.src = photoUrl;
     });
   };

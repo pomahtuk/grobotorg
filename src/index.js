@@ -1,11 +1,20 @@
-import 'purecss/build/base.css';
-import 'purecss/build/grids-responsive.css';
+import 'purecss';
 
-import './style.css';
+import './styles/style.css';
+import './styles/micromodal.css';
+import './styles/buttons.css';
 
-import './integrations/facebook';
-import './integrations/vk';
-import './integrations/camera';
+import './scripts/integrations/facebook';
+import './scripts/integrations/vk';
+import './scripts/integrations/camera';
+
+import MicroModal from 'micromodal';
+
+import Globals from './scripts/globals';
+
+Globals.MicroModal = MicroModal;
+
+MicroModal.init();
 
 // TODO: small screen height hack
 

@@ -18,7 +18,7 @@ body,
 }
 
 .background-image {
-    background: url('./assets/backgrounds/bg_simple_opt.jpg');
+    background: url('../assets/backgrounds/bg_simple_opt.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     background-position-x: center;
@@ -89,7 +89,9 @@ body,
 .memorial--image video {
     display: block;
     height: 100%;
-    width: 100%;
+    width: 135%;
+    left: 50%;
+    transform: translateX(-50%);
     z-index: 2;
     position: absolute;
 }

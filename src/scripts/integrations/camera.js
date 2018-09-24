@@ -1,3 +1,5 @@
+import Globals from '../globals';
+
 // Older browsers might not implement mediaDevices at all, so we set an empty object first
 if (navigator.mediaDevices === undefined) {
   navigator.mediaDevices = {};
@@ -29,30 +31,29 @@ const useCamera = () => {
     audio: false,
     video: {
       facingMode: 'user',
-      width: { min: 200, ideal: 400 },
-      height: { min: 200, ideal: 400 },
+      width: 320,
     },
   })
     .then((stream) => {
       /* use the stream */
-      const video = document.querySelector('video.user-video');
-      video.classList.remove('hidden');
+      Globals.videoElement.classList.remove('hidden');
       // resize
       // Older browsers may not have srcObject
-      if ('srcObject' in video) {
-        video.srcObject = stream;
+      if ('srcObject' in Globals.videoElement) {
+        Globals.videoElement.srcObject = stream;
       } else {
         // Avoid using this in new browsers, as it is going away.
-        video.src = window.URL.createObjectURL(stream);
+        Globals.videoElement.src = window.URL.createObjectURL(stream);
       }
-      video.onloadedmetadata = () => {
-        video.play();
+      Globals.videoElement.onloadedmetadata = () => {
+        Globals.videoElement.play();
       };
     })
-    .catch((err) => {
+    .catch(() => {
       /* handle the error */
-      alert(err);
-    });
+      // alert(err);
+    })
+    .finally(Globals.closeSocialModal);
 };
 
 document.getElementById('use_camera').addEventListener('click', useCamera);

@@ -1,4 +1,5 @@
-import updateImages from '../scripts/image-updater';
+import updateImages from '../image-updater';
+import Globals from '../globals';
 
 /* global VK */
 document.getElementById('vk_auth').addEventListener('click', () => {
@@ -12,5 +13,6 @@ document.getElementById('vk_auth').addEventListener('click', () => {
         updateImages(userData[0].photo_400_orig);
       }
     });
+    Globals.closeSocialModal();
   });
 });
