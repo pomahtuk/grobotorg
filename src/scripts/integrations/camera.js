@@ -31,7 +31,6 @@ const useCamera = () => {
     audio: false,
     video: {
       facingMode: 'user',
-      width: 320,
     },
   })
     .then((stream) => {
@@ -45,6 +44,7 @@ const useCamera = () => {
         // Avoid using this in new browsers, as it is going away.
         Globals.videoElement.src = window.URL.createObjectURL(stream);
       }
+      Globals.videoElement.setAttribute('playsinline', true);
       Globals.videoElement.onloadedmetadata = () => {
         Globals.videoElement.play();
       };
