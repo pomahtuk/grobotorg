@@ -9,6 +9,12 @@ import updateImages from './scripts/image-updater';
 
 // TODO: image updates
 
+/* global VK */
+VK.Widgets.Auth('vk_auth', {
+  onAuth: (data) => {
+    console.log(data);
+  },
+});
 
 /* global FB */
 window.checkLoginState = () => FB.getLoginStatus((response) => {
