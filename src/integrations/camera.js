@@ -25,7 +25,14 @@ if (navigator.mediaDevices.getUserMedia === undefined) {
 }
 
 const useCamera = () => {
-  navigator.mediaDevices.getUserMedia({ audio: true, video: { facingMode: 'user', width: 400, height: 400 } })
+  navigator.mediaDevices.getUserMedia({
+    audio: false,
+    video: {
+      facingMode: 'user',
+      width: { min: 200, ideal: 400 },
+      height: { min: 200, ideal: 400 },
+    },
+  })
     .then((stream) => {
       /* use the stream */
       const video = document.querySelector('video.user-video');
@@ -44,7 +51,7 @@ const useCamera = () => {
     })
     .catch((err) => {
       /* handle the error */
-      console.log(err);
+      alert(err);
     });
 };
 
