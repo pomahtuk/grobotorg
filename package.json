@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack --config webpack.prod.js",
-    "start": "webpack-dev-server --https  --open --config webpack.dev.js",
+    "start": "webpack-dev-server --https --host 0.0.0.0 --open --config webpack.dev.js",
     "publish-pages": "git branch -D gh-pages && git checkout -B gh-pages && yarn build && mv ./dist/* . && git add -A && git commit -m 'release' --allow-empty && git push --set-upstream origin gh-pages -f && git checkout master"
   },
   "author": "",
