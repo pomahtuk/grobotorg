@@ -79,9 +79,19 @@ body,
     filter: grayscale(100%);
 }
 
-.memorial--image img {
+.memorial--image img,
+.memorial--image video {
     width: 100%;
     display: block;
+    z-index: 1;
+}
+
+.memorial--image video {
+    display: block;
+    height: 100%;
+    width: 100%;
+    z-index: 2;
+    position: absolute;
 }
 
 .memorial--text {

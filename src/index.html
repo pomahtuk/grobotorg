@@ -22,7 +22,10 @@
         <div class="memorial-holder position-relative">
             <div class="memorial">
                 <img class="memorial-bg memorial-bg--simple position-relative" src="./assets/memorial_simple.png" />
-                <div class="memorial--image"><img src="http://i.pravatar.cc/250" /></div>
+                <div class="memorial--image">
+                    <img class="user-picture position-relative" src="http://i.pravatar.cc/250" />
+                    <video class="user-video position-relative hidden" autoplay/>
+                </div>
                 <div class="memorial--text">
                     Жил, умер, да и не все ли нам равно?
                     <br >
@@ -30,6 +33,8 @@
                     </fb:login-button>
                     <br >
                     <button id="vk_auth">VK</button>
+                    <br>
+                    <button id="use_camera">camera</button>
                 </div>
             </div>
         </div>
