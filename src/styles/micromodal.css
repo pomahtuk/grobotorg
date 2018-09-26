@@ -32,7 +32,7 @@
     border-radius: 4px;
     overflow-y: auto;
     box-sizing: border-box;
-    width: 60vh;
+    width: 80vw;
 }
 
 .modal__header {
@@ -61,8 +61,6 @@
 }
 
 .modal__content {
-    margin-top: 2rem;
-    margin-bottom: 2rem;
     line-height: 1.5;
     color: rgba(0, 0, 0, .8);
     text-align: center;
