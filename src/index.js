@@ -7,6 +7,7 @@ import './styles/buttons.css';
 import './scripts/integrations/facebook';
 import './scripts/integrations/vk';
 import './scripts/integrations/camera';
+import './scripts/layout/memorial-positioner';
 
 import MicroModal from 'micromodal';
 
