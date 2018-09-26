@@ -67,7 +67,7 @@ body,
 }
 
 .memorial--image {
-    top: 20%;
+    top: 15%;
     left: 50%;
     width: 45%;
     transform: translateX(-50%);
@@ -95,7 +95,7 @@ body,
 }
 
 .memorial--text {
-    top: 60%;
+    top: 55%;
     left: 50%;
     width: 45%;
     transform: translateX(-50%);

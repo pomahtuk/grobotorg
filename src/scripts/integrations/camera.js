@@ -49,10 +49,8 @@ const useCamera = () => {
         Globals.videoElement.play();
       };
     })
-    .catch((err) => {
+    .catch(() => {
       /* handle the error */
-      // alert(err);
-      console.log(err);
     })
     .finally(Globals.closeSocialModal);
 };
