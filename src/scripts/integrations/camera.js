@@ -48,6 +48,7 @@ const useCamera = () => {
       Globals.videoElement.onloadedmetadata = () => {
         Globals.videoElement.play();
       };
+      Globals.showShareButton();
     })
     .catch(() => {
       /* handle the error */

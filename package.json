@@ -34,6 +34,7 @@
     "webpack-merge": "^4.1.4"
   },
   "dependencies": {
+    "html2canvas": "^1.0.0-alpha.12",
     "micromodal": "^0.3.2",
     "purecss": "^1.0.0"
   }

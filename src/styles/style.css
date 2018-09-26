@@ -49,8 +49,14 @@ body,
     height: auto;
     position: absolute;
     bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
+}
+
+.memorial.simple {
+    background: url('../assets/memorial_simple.png');
+    background-position-x: center;
+    background-position-y: bottom;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .memorial--image,
@@ -74,7 +80,16 @@ body,
     border-radius: 100%;
     overflow: hidden;
     box-sizing: border-box;
-    filter: grayscale(100%);
+}
+
+.memorial--share-it {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 3;
+    text-align: center;
+    padding: 0 0 5% 0;
 }
 
 .memorial--image img,
