@@ -32,6 +32,7 @@
     border-radius: 4px;
     overflow-y: auto;
     box-sizing: border-box;
+    width: 60vh;
 }
 
 .modal__header {
@@ -65,10 +66,16 @@
     line-height: 1.5;
     color: rgba(0, 0, 0, .8);
     text-align: center;
+    display: flex;
+    flex-direction: column;
 }
 
 .modal__content > div {
-    display: inline-block;
+    margin: 2% 0px;
+}
+
+.modal__content > div button {
+    width: 100%;
 }
 
 .modal__btn {
