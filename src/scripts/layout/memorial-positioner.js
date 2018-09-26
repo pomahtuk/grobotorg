@@ -35,7 +35,7 @@ const handleResize = () => {
   Globals.simpleMemorialElement.style.height = `${resultingHeight}px`;
 
   // Calculate and set font size for text
-  Globals.simpleMemorialText.style.fontSize = `${Math.ceil(resultingWidth * 0.05)}px`;
+  Globals.simpleMemorialText.style.fontSize = `${Math.ceil(resultingWidth * 0.04)}px`;
   Globals.simpleMemorialText.style.lineHeight = `${Math.ceil(resultingWidth * 0.07)}px`;
 };
 
