@@ -14,5 +14,19 @@ document.getElementById('vk_auth').addEventListener('click', () => {
       }
     });
     Globals.closeSocialModal();
-  });
+  }, 8192);
 });
+
+
+const share = (params = {}, cb = () => { }) => {
+  const url = `https://vk.com/share.php?url=${params.url}&image=${params.image}`;
+  const link = document.createElement('a');
+  link.href = url;
+  link.target = '_blank';
+  link.innerHtml = 'test';
+  document.appendChild(link);
+  link.click();
+  cb();
+};
+
+export default share;

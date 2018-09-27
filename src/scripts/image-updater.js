@@ -1,9 +1,23 @@
 import Globals from './globals';
 
+import convertToGrayscale from './utils/imageDataToGrayscale';
+
 const updateImages = (photoUrl) => {
   const img = new Image();
-  img.src = photoUrl;
-  img.crossOrigin = 'Anonymous';
+
+  // using fetch to bypass canvas restriction to same-origin
+  // converting image to blob and then to base64 string
+  fetch(photoUrl)
+    .then(response => response.blob())
+    .then(blob => URL.createObjectURL(blob))
+    .then((data) => {
+      img.src = data;
+    })
+    .catch((err) => {
+      // TODO: alerts or something like this...
+      console.error(err);
+    });
+
   img.addEventListener('load', () => {
     // hide video, JIC
     Globals.videoElement.classList.add('hidden');
@@ -17,18 +31,9 @@ const updateImages = (photoUrl) => {
     context.drawImage(img, x, y);
 
     const imageData = context.getImageData(x, y, img.width, img.height);
-    const { data } = imageData;
 
-    // converting to grayscale
-    for (let i = 0; i < data.length; i += 4) {
-      const brightness = 0.34 * data[i] + 0.5 * data[i + 1] + 0.16 * data[i + 2];
-      // red
-      data[i] = brightness;
-      // green
-      data[i + 1] = brightness;
-      // blue
-      data[i + 2] = brightness;
-    }
+    // gryscale all the way!
+    convertToGrayscale(imageData);
 
     // overwrite original image
     context.putImageData(imageData, x, y);
