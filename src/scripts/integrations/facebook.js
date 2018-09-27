@@ -24,12 +24,13 @@ document.getElementById('fb_auth').addEventListener('click', () => {
   Globals.closeSocialModal();
 });
 
-
 const share = (params = {}, cb = () => {}) => {
   FB.ui({
     method: 'share_open_graph',
     action_type: 'og.likes',
-    action_properties: JSON.stringify(params),
+    action_properties: JSON.stringify({
+      object: params,
+    }),
   }, cb);
 };
 
