@@ -52,7 +52,7 @@ body,
 }
 
 .memorial.simple {
-    background: url('../assets/memorial_simple.png');
+    background: url('../assets/memorial_simple.png') transparent;
     background-position-x: center;
     background-position-y: bottom;
     background-repeat: no-repeat;

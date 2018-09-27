@@ -23,3 +23,14 @@ document.getElementById('fb_auth').addEventListener('click', () => {
   FB.login(checkLoginState, { scope: 'public_profile' });
   Globals.closeSocialModal();
 });
+
+
+const share = (params = {}, cb = () => {}) => {
+  FB.ui({
+    method: 'share_open_graph',
+    action_type: 'og.likes',
+    action_properties: JSON.stringify(params),
+  }, cb);
+};
+
+export default share;

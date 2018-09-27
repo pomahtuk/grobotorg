@@ -19,6 +19,7 @@ const updateImages = (photoUrl) => {
     const imageData = context.getImageData(x, y, img.width, img.height);
     const { data } = imageData;
 
+    // converting to grayscale
     for (let i = 0; i < data.length; i += 4) {
       const brightness = 0.34 * data[i] + 0.5 * data[i + 1] + 0.16 * data[i + 2];
       // red

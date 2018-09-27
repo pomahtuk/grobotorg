@@ -1,4 +1,5 @@
 import 'purecss';
+import 'whatwg-fetch';
 
 import './styles/style.css';
 import './styles/micromodal.css';
