@@ -8,9 +8,7 @@ const screenshotButtonId = 'screenshot';
 
 document.getElementById(screenshotButtonId).addEventListener('click', () => {
   html2canvas(document.querySelector('.memorial'), {
-    allowTaint: true,
-    useCORS: true,
-    logging: false,
+    logging: true,
     ignoreElements(element) {
       return element.id === screenshotButtonId;
     },
