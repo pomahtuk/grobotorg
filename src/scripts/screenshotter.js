@@ -1,7 +1,7 @@
 import html2canvas from 'html2canvas';
 import fetchUploadFile from './integrations/cloudinary';
-// import shareFaceBook from './integrations/facebook';
-import shareVk from './integrations/vk';
+import shareFaceBook from './integrations/facebook';
+// import shareVk from './integrations/vk';
 
 document.getElementById('screenshot').addEventListener('click', () => {
   html2canvas(document.querySelector('.memorial'), {
@@ -10,13 +10,13 @@ document.getElementById('screenshot').addEventListener('click', () => {
     logging: false,
   }).then((canvas) => {
     fetchUploadFile(canvas.toDataURL(), (imageResponse) => {
-      shareVk({
-        url: window.location.href,
+      // shareVk({
+      //   url: window.location.href,
+      //   image: imageResponse.secure_url,
+      // });
+      shareFaceBook({
         image: imageResponse.secure_url,
       });
-      // shareFaceBook({
-      //   image: imageResponse.secure_url
-      // });
     });
   });
 });
