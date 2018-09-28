@@ -4,6 +4,7 @@ import 'whatwg-fetch';
 import './styles/style.css';
 import './styles/micromodal.css';
 import './styles/buttons.css';
+import './styles/loader.css';
 
 import './scripts/integrations/facebook';
 import './scripts/integrations/vk';

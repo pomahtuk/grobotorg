@@ -1,32 +1,44 @@
-// import html2canvas from 'html2canvas';
 import fetchUploadFile from './integrations/cloudinary';
-import shareFaceBook from './integrations/facebook';
-// import shareVk from './integrations/vk';
-// import enlargeCanvas from './utils/enlargeImage';
+import setFbShareParameters from './integrations/facebook';
+import setVkShareParameters from './integrations/vk';
 import convertToCanvas from './layout/layout-to-canvas';
 
-const screenshotButtonId = 'screenshot';
+import Globals from './globals';
 
-const shareCallback = (canvas) => {
-  // make image bigger
-  // then send it to cloud storage
-  fetchUploadFile(canvas.toDataURL(), (imageResponse) => {
-    // shareVk({
-    //   url: window.location.href,
-    //   image: imageResponse.secure_url,
-    // });
-    console.log(imageResponse);
-    shareFaceBook({
-      'og:title': 'Примерь памятник',
-      'og:image': imageResponse.secure_url,
-      'og:url': 'https://pomahtuk.github.io/grobotorg/',
-    });
-  });
-};
+const loadingMinTimespanMs = 3000;
 
-document.getElementById(screenshotButtonId).addEventListener('click', () => {
+document.getElementById('screenshot').addEventListener('click', () => {
+  const modalElement = document.querySelector('#modal-share');
+  const modalLoader = modalElement.querySelector('.share-loader');
+  const modalContent = modalElement.querySelector('.share-loaded');
+  // prepare modal
+  modalContent.classList.add('hidden');
+  modalLoader.classList.remove('hidden');
+  // show modal
+  Globals.MicroModal.show('modal-share');
+
+  const startTime = Date.now();
   convertToCanvas().then((canvas) => {
-    console.log('here?');
-    shareCallback(canvas);
+    fetchUploadFile(canvas.toDataURL(), (imageResponse) => {
+      const endTime = Date.now();
+      // if upload took less than 3 seconds
+      const timeTaken = endTime - startTime;
+      // fake longer upload, just for sake of it
+      const timerInterval = timeTaken < loadingMinTimespanMs ? loadingMinTimespanMs - timeTaken : 0;
+      setTimeout(() => {
+        modalContent.classList.remove('hidden');
+        modalLoader.classList.add('hidden');
+      }, timerInterval);
+
+      const shareParams = {
+        title: 'Примерь памятник',
+        image: imageResponse.secure_url,
+        url: 'https://pomahtuk.github.io/grobotorg/',
+      };
+      // set up facebook share
+      setFbShareParameters(shareParams);
+      // set up vk share
+      setVkShareParameters(shareParams);
+    });
   });
 });

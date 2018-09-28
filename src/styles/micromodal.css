@@ -68,11 +68,11 @@
     flex-direction: column;
 }
 
-.modal__content > div {
+.modal__content .button-holder {
     margin: 2% 0px;
 }
 
-.modal__content > div button {
+.modal__content .button-holder button {
     width: 100%;
     height: 52px;
     line-height: 36px;

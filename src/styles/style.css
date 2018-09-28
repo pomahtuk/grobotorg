@@ -120,3 +120,6 @@ body,
     font-size: 3.5vw;
     line-height: 6vw;
 }
+.button-holder.vk-holder a {
+    display: block !important;
+}

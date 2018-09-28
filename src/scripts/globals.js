@@ -8,6 +8,9 @@ const Globals = {
   closeSocialModal() {
     document.querySelector('#modal-source .modal__overlay').click();
   },
+  closShareModal() {
+    document.querySelector('#modal-share .modal__overlay').click();
+  },
   showShareButton() {
     document.querySelector('.memorial--share-it').classList.remove('hidden');
   },
