@@ -4,6 +4,7 @@ const Globals = {
   videoElement: document.querySelector('video.user-video'),
   simpleMemorialElement: document.querySelector('.memorial.simple'),
   simpleMemorialText: document.querySelector('.memorial.simple .memorial--text'),
+  simpleMemorialImage: document.querySelector('.memorial.simple .memorial--image'),
   closeSocialModal() {
     document.querySelector('#modal-source .modal__overlay').click();
   },
