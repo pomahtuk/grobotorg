@@ -2,6 +2,7 @@ import Globals from '../globals';
 
 const pxToFloat = px => parseFloat(px.replace('px', ''), 10);
 
+// function to support line-break for texts to big for one line
 const printAtWordWrap = (context, text, x, y, lineHeight, fitWidth = 0) => {
   if (fitWidth <= 0) {
     context.fillText(text, x, y);
@@ -34,6 +35,7 @@ const printAtWordWrap = (context, text, x, y, lineHeight, fitWidth = 0) => {
   }
 };
 
+// fixing poor render of text for retina-like devices
 const setupCanvasForText = (canvas) => {
   const context = canvas.getContext('2d');
 
@@ -65,6 +67,7 @@ const setupCanvasForText = (canvas) => {
   return context;
 };
 
+// get memorial image and annd it to canvas
 const drawMemorial = canvas => new Promise((resolve, reject) => {
   const context = canvas.getContext('2d');
   // put image
@@ -83,6 +86,7 @@ const drawMemorial = canvas => new Promise((resolve, reject) => {
   };
 });
 
+// idd picture from meorial to canvas
 const drawPicture = canvas => new Promise((resolve) => {
   const context = canvas.getContext('2d');
 
@@ -119,6 +123,7 @@ const drawPicture = canvas => new Promise((resolve) => {
   resolve(canvas);
 });
 
+// add selected title to canvas
 const drawText = canvas => new Promise((resolve) => {
   const context = canvas.getContext('2d');
 
@@ -155,6 +160,28 @@ const drawText = canvas => new Promise((resolve) => {
   resolve(canvas);
 });
 
+// force 16:9 aspect ratio for canvas
+const enlargeCanvasAndPadImage = canvas => new Promise((resolve) => {
+  const inMem = document.createElement('canvas');
+  inMem.width = canvas.width;
+  inMem.height = canvas.height;
+
+  const inMemCtx = inMem.getContext('2d');
+  // "Save" the canvas bitmap to the in memory canvas
+  inMemCtx.drawImage(canvas, 0, 0);
+
+  // Resize the canvas, which will clear it
+  canvas.width = Math.ceil(canvas.height * (16 / 9));
+  canvas.height = inMem.height;
+  const offsetX = (canvas.width - inMem.width) / 2;
+
+  // "restore" the bitmap to the old canvas, using an appropraite offset
+  const ctx = canvas.getContext('2d');
+  ctx.drawImage(inMem, offsetX, 0);
+
+  resolve(canvas);
+});
+
 const convertToCanvas = () => new Promise((resolve, reject) => {
   // create canvas
   const canvas = document.createElement('canvas');
@@ -166,8 +193,8 @@ const convertToCanvas = () => new Promise((resolve, reject) => {
   drawMemorial(canvas)
     .then(drawPicture)
     .then(drawText)
+    .then(enlargeCanvasAndPadImage)
     .then(() => {
-      document.body.appendChild(canvas);
       resolve(canvas);
     })
     .catch(reject);
