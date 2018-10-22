@@ -58,6 +58,20 @@ module.exports = {
         // before url-loader/svg-url-loader
         // and not duplicate it in rules with them
         enforce: 'pre',
+        options: {
+          mozjpeg: {
+            progressive: true,
+            quality: 65,
+          },
+          pngquant: {
+            quality: '65-90',
+            speed: 4,
+          },
+          // // the webp option will enable WEBP
+          // webp: {
+          //   quality: 75,
+          // },
+        },
       },
       {
         test: /\.(jpg|png|gif|svg)$/,

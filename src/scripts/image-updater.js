@@ -20,7 +20,6 @@ const updateImages = (photoUrl) => {
 
   img.addEventListener('load', () => {
     // hide video, JIC
-    Globals.videoElement.classList.add('hidden');
     const canvas = document.createElement('canvas');
     canvas.width = img.width;
     canvas.height = img.height;

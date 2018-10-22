@@ -123,3 +123,11 @@ body,
 .button-holder.vk-holder a {
     display: block !important;
 }
+
+.visually-hidden {
+    opacity: 0;
+    z-index: 0;
+    position: relative;
+    top: 0;
+    left: 0;
+}

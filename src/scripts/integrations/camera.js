@@ -1,4 +1,5 @@
 import Globals from '../globals';
+import convertToGrayscale from '../utils/imageDataToGrayscale';
 
 // Older browsers might not implement mediaDevices at all, so we set an empty object first
 if (navigator.mediaDevices === undefined) {
@@ -35,7 +36,6 @@ const useCamera = () => {
   })
     .then((stream) => {
       /* use the stream */
-      Globals.videoElement.classList.remove('hidden');
       // resize
       // Older browsers may not have srcObject
       if ('srcObject' in Globals.videoElement) {
@@ -48,6 +48,39 @@ const useCamera = () => {
       Globals.videoElement.onloadedmetadata = () => {
         Globals.videoElement.play();
       };
+
+      Array.prototype.forEach.call(Globals.imagesElements, (image) => {
+        image.style.height = `${image.height}px`;
+        image.style.width = `${image.width}px`;
+      });
+
+      Globals.videoElement.addEventListener('play', () => {
+        setInterval(() => {
+          const video = Globals.videoElement;
+          const canvas = document.createElement('canvas');
+          canvas.width = video.videoWidth;
+          canvas.height = video.videoHeight;
+          const context = canvas.getContext('2d');
+          const x = canvas.width > canvas.height ? (canvas.width - canvas.height) / 2 : 0;
+          const y = canvas.height > canvas.width ? (canvas.height - canvas.width) / 2 : 0;
+
+          // put original video on cavas
+          context.drawImage(video, 0, 0, video.videoWidth, video.videoHeight);
+
+          const imageData = context.getImageData(x, y, video.videoWidth, video.videoHeight);
+
+          // gryscale all the way!
+          convertToGrayscale(imageData);
+
+          // overwrite original image
+          context.putImageData(imageData, x, y);
+
+          Array.prototype.forEach.call(Globals.imagesElements, (image) => {
+            image.src = canvas.toDataURL();
+          });
+        }, 33);
+      }, false);
+
       Globals.showShareButton();
     })
     .catch(() => {
