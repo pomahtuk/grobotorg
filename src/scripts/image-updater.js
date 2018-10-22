@@ -13,9 +13,8 @@ const updateImages = (photoUrl) => {
     .then((data) => {
       img.src = data;
     })
-    .catch((err) => {
+    .catch(() => {
       // TODO: alerts or something like this...
-      console.error(err);
     });
 
   img.addEventListener('load', () => {

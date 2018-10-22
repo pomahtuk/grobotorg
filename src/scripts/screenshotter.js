@@ -17,6 +17,7 @@ document.getElementById('screenshot').addEventListener('click', () => {
   // show modal
   Globals.MicroModal.show('modal-select');
 
+
   const startTime = Date.now();
   convertToCanvas().then((canvas) => {
     fetchUploadFile(canvas.toDataURL(), (imageResponse) => {
