@@ -37,6 +37,9 @@ const handleResize = () => {
   // Calculate and set font size for text
   Globals.simpleMemorialText.style.fontSize = `${Math.ceil(resultingWidth * 0.04)}px`;
   Globals.simpleMemorialText.style.lineHeight = `${Math.ceil(resultingWidth * 0.07)}px`;
+
+  Globals.shareButtonElement.style.fontSize = `${Math.ceil(resultingWidth * 0.04)}px`;
+  Globals.shareButtonElement.style.lineHeight = `${Math.ceil(resultingWidth * 0.07)}px`;
 };
 
 // add event listener

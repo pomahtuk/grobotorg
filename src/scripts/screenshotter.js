@@ -8,14 +8,14 @@ import Globals from './globals';
 const loadingMinTimespanMs = 3000;
 
 document.getElementById('screenshot').addEventListener('click', () => {
-  const modalElement = document.querySelector('#modal-share');
+  const modalElement = document.querySelector('#modal-select');
   const modalLoader = modalElement.querySelector('.share-loader');
   const modalContent = modalElement.querySelector('.share-loaded');
   // prepare modal
   modalContent.classList.add('hidden');
   modalLoader.classList.remove('hidden');
   // show modal
-  Globals.MicroModal.show('modal-share');
+  Globals.MicroModal.show('modal-select');
 
   const startTime = Date.now();
   convertToCanvas().then((canvas) => {
